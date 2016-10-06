@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+            .show{
+                width: 200px;
+                margin:100px;
+            }
+        </style>
+    </head>
+    <body>
+    <!-- <img src="" alt="未选中路径" class="show" /> -->
+    <!-- <input type="file" accept="img/*" class="get" /> -->
+    <script type="text/javascript" src="jquery.js"></script>
+<!--     <script type="text/javascript">
+    var fr;
+    $(".get").on("change",function(){
+        console.log(this.files[0]);
+        var mm = this.files[0];
+         fr = new FileReader();
+        fr.onload = function(){
+            console.log(this.result);
+        }
+    })
+    </script> -->
+<script type="text/javascript">  
+        function showPreview(source) {  
+            var file = source.files[0];  
+            if(window.FileReader) {  
+                var fr = new FileReader();  
+                fr.onloadend = function(e) {  
+                    document.getElementById("portrait").src = e.target.result;  
+                    
+                };  
+                fr.readAsDataURL(file);  
+            }  
+        }  
+    </script>  
+  
+<input type="file" name="file" onchange="showPreview(this)" />  
+<img id="portrait" src="" width="70" height="75">  
+    </body>
+</html>

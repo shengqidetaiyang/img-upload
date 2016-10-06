@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+            .show{
+                width: 200px;
+                margin:100px;
+            }
+        </style>
+    </head>
+    <body>
+    <img src="" alt="未选中路径" class="show" />
+    <input type="file" accept="img/*" class="get" />
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript">
+    var fr;
+    $(".get").on("change",function(){
+        console.log(this.files[0]);
+        var mm = this.files[0];
+         fr = new FileReader();
+        fr.onload = function(e){
+            console.log(e.target.result);
+            $(".show").attr({src:e.target.result});
+        }
+        fr.readAsDataURL(mm);  
+    })
+    </script>
+    </body>
+</html>
