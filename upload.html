@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文件上传</title>
+    <style type="text/css"> 
+        #picBox{
+            margin-top: 20px;
+            width:205px;
+            border: 1px solid red;
+        }
+        #picBox img {
+            width:100px;
+            height: 100px;
+            margin-left: 5px;
+        }
+        #picBox img:nth-of-type(odd){
+            margin-left: 0px;
+        }
+        #wrap,#wrap1{
+            width: 300px;
+            height: 1000px;
+            border: 1px solid red;
+        }
+         #wrap img,#wrap1 img{
+            width:100px;
+            height: 100px;
+            margin-left: 5px;
+         }
+    </style>
+</head>
+<body>
+    <input type="file" accept="image/*" name="file[]" id="file">
+    <div id="picBox"></div>
+    <div id="wrap"></div>
+    <div id="wrap1"></div>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript">
+        var file = document.getElementById("file");
+        var picBox = document.getElementById("picBox");
+        var wrap = document.getElementById("wrap")
+        var wrap1 = document.getElementById("wrap1")
+        //显示上传图片的信息
+        file.onchange = function() {
+            var files = this.files;
+            //picBox.innerHTML = "";
+           
+                //显示上传图片的缩略图
+                var url = window.URL || window.webkitURL;
+                if(url) {
+                    var src = url.createObjectURL(files[0]);
+                    console.log(src);
+
+                }else if(window.FileReader) {
+                    var fr = new FileReader();
+                    fr.readAsDataURL(files[0]);//将图片文件转换成base64位
+                    fr.onload = function(e) {
+            
+                        console.log(this.result);
+                   
+                    }
+                }
+            
+
+
+        }
+    </script>
+</body>
+</html>
+
+    
